@@ -154,6 +154,27 @@ class DBHelper {
   }
 
   /**
+   * Restaurant image src URL.
+   */
+  static imageUrlSrcForRestaurant(restaurant) {
+    const imgName = restaurant.photograph.split(".")[0];
+    const imgSrc = '/img/' + imgName + '-300.jpg 300w, '
+                 + '/img/' + imgName + '-400.jpg 400w, '
+                 + '/img/' + imgName + '-600.jpg 600w, '
+                 + '/img/' + imgName + '-800.jpg 800w';
+    return (imgSrc);
+  }
+
+  /**
+   * Restaurant image src URL.
+   */
+  static restaurantDesc(restaurant) {
+  const desc = restaurant.name + ' restaurant';
+    return (desc);
+  }
+
+
+  /**
    * Map marker for a restaurant.
    */
   static mapMarkerForRestaurant(restaurant, map) {

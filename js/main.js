@@ -141,6 +141,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.srcset = DBHelper.imageUrlSrcForRestaurant(restaurant);
+  image.sizes="(max-width: 800px) 100vw, 800px";
+  image.title =  DBHelper.restaurantDesc(restaurant) + ' image';
+  image.alt =  DBHelper.restaurantDesc(restaurant);
   li.append(image);
 
   const name = document.createElement('h1');
@@ -157,10 +161,12 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.setAttribute("role", "button");
+  more.setAttribute("aria-label", restaurant.name + " Review Detail");
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  li.append(more);
 
-  return li
+  return li;
 }
 
 /**
